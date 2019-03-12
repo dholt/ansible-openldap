@@ -11,7 +11,7 @@ cn: {{ item.name }}
 gidNumber: {{ item.gidNum }}
 {% if item.users is defined %}
 {% for user in item.users %}
-memberUid: {{ item.user }}
+memberUid: {{ user }}
 {% endfor %}
 {% endif %}
 {% endfor %}
