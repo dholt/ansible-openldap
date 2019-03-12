@@ -9,6 +9,11 @@ dn: cn={{ item.name }},ou={{ item.ou }},{{ openldap_base }}
 objectClass: posixGroup
 cn: {{ item.name }}
 gidNumber: {{ item.gidNum }}
+{% if item.users is defined %}
+{% for user in item.users %}
+memberUid: {{ item.user }}
+{% endfor %}
+{% endif %}
 {% endfor %}
 
 {% for item in openldap_users %}
