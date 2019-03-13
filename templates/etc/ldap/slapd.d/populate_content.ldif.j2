@@ -17,19 +17,16 @@ memberUid: {{ user }}
 {% endfor %}
 
 {% for item in openldap_users %}
-dn: uid={{ item.FirstName|lower }},ou={{ item.ou }},{{ openldap_base }}
+dn: uid={{ item.uid|lower }},ou={{ item.ou }},{{ openldap_base }}
 objectClass: inetOrgPerson
 objectClass: posixAccount
 objectClass: shadowAccount
-uid: {{ item.FirstName|lower }}
-sn: {{ item.LastName }}
-givenName: {{ item.FirstName }}
-cn: {{ item.FirstName }} {{ item.LastName }}
-displayName: {{ item.FirstName }} {{ item.LastName }}
+uid: {{ item.uid|lower }}
+cn: {{ item.cn }}
 uidNumber: {{ item.uidNum }}
 gidNumber: {{ item.gidNum }}
 userPassword: {{ item.password }}
-gecos: {{ item.FirstName }} {{ item.LastName }}
+gecos: {{ item.uid|lower }}
 loginShell: {{ item.loginShell }}
 homeDirectory: {{ item.homeDirectory }}
 {% endfor %}
